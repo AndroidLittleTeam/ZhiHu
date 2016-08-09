@@ -1,4 +1,4 @@
-package com.robert.zhihu.mvp.view.impl;
+package com.robert.zhihu.ui.impl.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

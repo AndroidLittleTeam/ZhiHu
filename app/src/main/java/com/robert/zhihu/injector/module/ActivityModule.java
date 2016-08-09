@@ -1,10 +1,10 @@
-package com.robert.zhihu.dagger.module;
+package com.robert.zhihu.injector.module;
 
 import android.app.Activity;
 import android.content.Context;
 
-import com.robert.zhihu.dagger.scope.ContextLife;
-import com.robert.zhihu.dagger.scope.PerActivity;
+import com.robert.zhihu.injector.scope.ContextLife;
+import com.robert.zhihu.injector.scope.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;

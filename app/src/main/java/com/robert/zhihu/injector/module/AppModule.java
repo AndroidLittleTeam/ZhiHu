@@ -1,9 +1,9 @@
-package com.robert.zhihu.dagger.module;
+package com.robert.zhihu.injector.module;
 
 import android.content.Context;
 
 import com.robert.zhihu.App;
-import com.robert.zhihu.dagger.scope.ContextLife;
+import com.robert.zhihu.injector.scope.ContextLife;
 
 import javax.inject.Singleton;
 

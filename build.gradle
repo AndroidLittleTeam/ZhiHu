@@ -11,14 +11,14 @@ ext {
     ]
 
     libraries = [
-            supportVersion    : "23.+",
+            supportVersion    : "23.4.0",
             retrofit          : "2.1.0",
             okhttp            : "3.2.0",
             rxandroid         : "1.2.1",
             rxjava            : "1.1.6",
             dagger            : "2.5",
             javax_annotation  : "10.0-b28",
-            butterknife       : "8.0.1",
+            butterknife       : "8.2.1",
             glide             : "3.7.0",
             recycler_animators: "2.1.0",
             circleimageview   : "2.0.0"

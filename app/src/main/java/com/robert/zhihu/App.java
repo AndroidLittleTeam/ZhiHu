@@ -2,9 +2,9 @@ package com.robert.zhihu;
 
 import android.app.Application;
 
-import com.robert.zhihu.dagger.component.AppComponent;
-import com.robert.zhihu.dagger.component.DaggerAppComponent;
-import com.robert.zhihu.dagger.module.AppModule;
+import com.robert.zhihu.injector.component.AppComponent;
+import com.robert.zhihu.injector.component.DaggerAppComponent;
+import com.robert.zhihu.injector.module.AppModule;
 
 /**
  * Created by robert on 2016/8/1.

@@ -3,4 +3,13 @@
     <string name="not_network">当前无网络连接,请检查网络…</string>
     <string name="copy_done">复制成功</string>
     <string name="open_failure">打开失败,没有找到打开该链接的其它应用</string>
+
+
+    <!-- dialog button text -->
+    <string name="permission_title">Ask for Permission</string>
+    <string name="dialog_btn_ok">Ok</string>
+    <string name="dialog_btn_cancel">Cancel</string>
+    <string name="dialog_title_info">Information</string>
+    <string name="dialog_title_new">New</string>
+    <string name="dialog_title_move">Move to...</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.robert.zhihu.dagger.scope;
+package com.robert.zhihu.injector.scope;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,5 +10,5 @@ import javax.inject.Scope;
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PerFragment {
+public @interface PerService {
 }

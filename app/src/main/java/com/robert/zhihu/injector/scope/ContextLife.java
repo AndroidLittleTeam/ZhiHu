@@ -1,4 +1,4 @@
-package com.robert.zhihu.dagger.scope;
+package com.robert.zhihu.injector.scope;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

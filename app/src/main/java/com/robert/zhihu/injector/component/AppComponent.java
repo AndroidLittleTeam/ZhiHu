@@ -1,10 +1,11 @@
-package com.robert.zhihu.dagger.component;
+package com.robert.zhihu.injector.component;
 
 import android.content.Context;
 
 import com.robert.zhihu.Base.BaseActivity;
-import com.robert.zhihu.dagger.module.AppModule;
-import com.robert.zhihu.dagger.scope.ContextLife;
+import com.robert.zhihu.Base.BaseFragment;
+import com.robert.zhihu.injector.module.AppModule;
+import com.robert.zhihu.injector.scope.ContextLife;
 
 import javax.inject.Singleton;
 
@@ -17,6 +18,8 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
     void inject(BaseActivity baseActivity);
+
+    void inject(BaseFragment baseFragment);
 
     //提供Application
     @ContextLife()
