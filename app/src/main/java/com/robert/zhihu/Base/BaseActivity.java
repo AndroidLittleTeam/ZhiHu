@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.orhanobut.logger.Logger;
 import com.robert.zhihu.App;
 import com.robert.zhihu.dagger.component.ActivityComponent;
 import com.robert.zhihu.dagger.component.AppComponent;
@@ -17,6 +18,7 @@ import com.robert.zhihu.dagger.module.ActivityModule;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    public static final String TAG = "BaseActivity";
     protected ActivityComponent mActivityComponent;
     protected Context mContext;
 
@@ -51,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (mIPresenter != null) {
             mIPresenter.detachView();
         } else {
-            YLog.wtf("yuyidong", "this activity " + this.getClass().getSimpleName() + "  没有设置 IPresenter!!!");
+            Logger.d(TAG, "this activity " + this.getClass().getSimpleName() + "  没有设置 IPresenter!!!");
         }
     }
 }
