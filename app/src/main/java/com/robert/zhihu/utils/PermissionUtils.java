@@ -13,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 
+import com.orhanobut.logger.Logger;
+import com.robert.zhihu.Base.IPresenter;
 import com.wkw.common_lib.R;
 
 import java.lang.reflect.InvocationTargetException;
@@ -252,9 +254,9 @@ public class PermissionUtils {
                         }
                         method.invoke(iPresenter);
                     } catch (IllegalAccessException e) {
-                        YLog.e(TAG, "IllegalAccessException--->" + e);
+                        Logger.e(TAG, "IllegalAccessException--->" + e);
                     } catch (InvocationTargetException e) {
-                        YLog.e(TAG, "InvocationTargetException--->" + e);
+                        Logger.e(TAG, "InvocationTargetException--->" + e);
                     }
                 }
             }

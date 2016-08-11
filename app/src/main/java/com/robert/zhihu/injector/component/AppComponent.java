@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.robert.zhihu.Base.BaseActivity;
 import com.robert.zhihu.Base.BaseFragment;
+import com.robert.zhihu.data.api.HotApi;
 import com.robert.zhihu.injector.module.AppModule;
 import com.robert.zhihu.injector.scope.ContextLife;
 
@@ -24,4 +25,6 @@ public interface AppComponent {
     //提供Application
     @ContextLife()
     Context getContext();
+
+    HotApi getHotApi();
 }

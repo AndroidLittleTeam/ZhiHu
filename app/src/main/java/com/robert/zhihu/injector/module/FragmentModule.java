@@ -31,7 +31,7 @@ public class FragmentModule {
 
     @Provides
     @PerFragment
-    public Fragment provideFramgent() {
+    public Fragment provideFragment() {
         return mFragment;
     }
 

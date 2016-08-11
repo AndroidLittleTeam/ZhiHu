@@ -14,6 +14,7 @@ import com.robert.zhihu.injector.component.ActivityComponent;
 import com.robert.zhihu.injector.component.AppComponent;
 import com.robert.zhihu.injector.component.DaggerActivityComponent;
 import com.robert.zhihu.injector.module.ActivityModule;
+import com.robert.zhihu.utils.PermissionUtils;
 import com.wkw.common_lib.utils.AppManager;
 
 import butterknife.ButterKnife;
@@ -32,10 +33,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        ButterKnife.bind(this);
-        mContext = this;
         AppComponent appComponent = App.getAppComponent();
         mActivityComponent = DaggerActivityComponent
                 .builder()
@@ -43,6 +40,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .activityModule(new ActivityModule(this))
                 .build();
         appComponent.inject(this);
+        super.onCreate(savedInstanceState);
+        mContext = this;
+        setContentView(getLayoutId());
+        ButterKnife.bind(this);
         initInjector();
         initViewWithListener();
         AppManager.getAppManager().addActivity(this);
