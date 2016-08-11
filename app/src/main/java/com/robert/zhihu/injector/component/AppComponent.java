@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.robert.zhihu.Base.BaseActivity;
 import com.robert.zhihu.Base.BaseFragment;
+import com.robert.zhihu.cache.CacheLoader;
 import com.robert.zhihu.data.api.HotApi;
 import com.robert.zhihu.injector.module.AppModule;
 import com.robert.zhihu.injector.scope.ContextLife;
@@ -27,4 +28,6 @@ public interface AppComponent {
     Context getContext();
 
     HotApi getHotApi();
+
+    CacheLoader getCacheLoader();
 }

@@ -3,6 +3,7 @@ package com.robert.zhihu.injector.module;
 import android.content.Context;
 
 import com.robert.zhihu.App;
+import com.robert.zhihu.cache.CacheLoader;
 import com.robert.zhihu.common.Constants;
 import com.robert.zhihu.data.api.HotApi;
 import com.robert.zhihu.injector.scope.ContextLife;
@@ -64,6 +65,12 @@ public class AppModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(Constants.Base_Url)
                 .build().create(HotApi.class);
+    }
+
+    @Provides
+    @Singleton
+    public CacheLoader provideCacheLoader() {
+        return CacheLoader.getInstance();
     }
 
 }

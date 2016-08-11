@@ -5,6 +5,6 @@
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.impl.Activity.SplashActivity">
+    tools:context=".ui.impl.activity.SplashActivity">
 
 </android.support.constraint.ConstraintLayout>

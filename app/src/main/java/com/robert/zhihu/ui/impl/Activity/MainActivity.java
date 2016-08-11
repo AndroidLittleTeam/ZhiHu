@@ -1,4 +1,4 @@
-package com.robert.zhihu.ui.impl.Activity;
+package com.robert.zhihu.ui.impl.activity;
 
 import android.view.View;
 
