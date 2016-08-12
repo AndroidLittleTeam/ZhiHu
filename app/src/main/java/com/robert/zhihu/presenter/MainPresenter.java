@@ -15,9 +15,9 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     private DataManager mDataManager;
 
     @Inject
-    public MainPresenter() {
+    public MainPresenter(DataManager dataManager) {
         super();
-//        this.mDataManager = dataManager;
+        this.mDataManager = dataManager;
     }
 
     @Override

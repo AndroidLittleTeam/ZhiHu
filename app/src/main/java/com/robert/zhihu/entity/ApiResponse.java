@@ -1,8 +1,6 @@
 package com.robert.zhihu.entity;
 
-/**
- * Created by wukewei on 16/5/26.
- */
+
 public class ApiResponse<T> {
 
     public static final int SUCCESS_CODE = 200;

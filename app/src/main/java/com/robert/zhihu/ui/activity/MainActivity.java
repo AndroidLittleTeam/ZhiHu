@@ -1,8 +1,12 @@
 package com.robert.zhihu.ui.activity;
 
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.robert.zhihu.R;
 import com.robert.zhihu.adapter.PopularPageAdapter;
@@ -15,7 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -26,12 +30,18 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
 
+    @BindView(R.id.nav)
+    NavigationView mNavigation;
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+
     private PopularPageAdapter popularPageAdapter;
 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main_content;
+        return R.layout.activity_main;
     }
 
     @Override
@@ -42,6 +52,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     protected void initEventAndData() {
         mIPresenter.getTabs();
+        setSupportActionBar(mToolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        mNavigation.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -53,5 +69,11 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         }
         mViewPager.setAdapter(popularPageAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        return false;
     }
 }

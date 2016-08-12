@@ -35,6 +35,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void onAttach(Context context) {
         mContext = context;
+        mFragmentComponent = DaggerFragmentComponent.builder()
+                .appComponent(App.getAppComponent())
+                .fragmentModule(new FragmentModule(this))
+                .build();
+        initInjector();
         super.onAttach(context);
     }
 
@@ -49,10 +54,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        mFragmentComponent = DaggerFragmentComponent.builder()
-                .appComponent(App.getAppComponent())
-                .fragmentModule(new FragmentModule(this))
-                .build();
+
 
     }
 
@@ -60,11 +62,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
      * 初始化注入
      */
     public abstract void initInjector();
-
-    /**
-     * 初始化监听器
-     */
-    public abstract void initListener(View view);
 
     /**
      * 初始化UI

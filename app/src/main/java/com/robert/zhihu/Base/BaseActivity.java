@@ -41,12 +41,12 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
                 .appComponent(appComponent)
                 .activityModule(new ActivityModule(this))
                 .build();
+        initInjector();
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         if (mIPresenter != null) mIPresenter.attachView(this);
-        initInjector();
         initEventAndData();
         AppManager.getAppManager().addActivity(this);
     }
