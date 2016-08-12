@@ -6,7 +6,7 @@ import android.content.Context;
 import com.robert.zhihu.injector.module.ActivityModule;
 import com.robert.zhihu.injector.scope.ContextLife;
 import com.robert.zhihu.injector.scope.PerActivity;
-import com.robert.zhihu.ui.impl.activity.MainActivity;
+import com.robert.zhihu.ui.activity.MainActivity;
 
 import dagger.Component;
 

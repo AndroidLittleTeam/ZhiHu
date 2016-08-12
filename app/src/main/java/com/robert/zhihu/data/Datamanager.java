@@ -47,6 +47,13 @@ public class DataManager {
         return tabs;
     }
 
+    /**
+     * 获取数据
+     *
+     * @param pageNum
+     * @param type
+     * @return
+     */
     public Observable<List<Popular>> getPopular(int pageNum, String type) {
         return mHotApi.getPopular(pageNum, Constants.PAGE_SIZE, type)
                 .subscribeOn(Schedulers.io())
@@ -73,6 +80,12 @@ public class DataManager {
                 });
     }
 
+    /**
+     * 获取缓存数据
+     *
+     * @param type
+     * @return
+     */
     public Observable<List<Popular>> getCachePopular(String type) {
         NetworkCache<ListPopular> networkCache = new NetworkCache<ListPopular>() {
             @Override

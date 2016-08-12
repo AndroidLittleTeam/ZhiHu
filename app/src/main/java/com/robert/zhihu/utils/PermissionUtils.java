@@ -14,7 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 
 import com.orhanobut.logger.Logger;
-import com.robert.zhihu.Base.IPresenter;
+import com.robert.zhihu.base.IPresenter;
 import com.wkw.common_lib.R;
 
 import java.lang.reflect.InvocationTargetException;

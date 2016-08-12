@@ -5,6 +5,7 @@ import android.content.Context;
 import com.robert.zhihu.App;
 import com.robert.zhihu.cache.CacheLoader;
 import com.robert.zhihu.common.Constants;
+import com.robert.zhihu.data.DataManager;
 import com.robert.zhihu.data.api.HotApi;
 import com.robert.zhihu.injector.scope.ContextLife;
 
@@ -71,6 +72,12 @@ public class AppModule {
     @Singleton
     public CacheLoader provideCacheLoader() {
         return CacheLoader.getInstance();
+    }
+
+    @Provides
+    @Singleton
+    DataManager provideDataManager(HotApi hotApi, CacheLoader cacheLoader) {
+        return new DataManager(hotApi, cacheLoader);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.robert.zhihu.Base;
+package com.robert.zhihu.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import com.robert.zhihu.injector.component.DaggerFragmentComponent;
 import com.robert.zhihu.injector.component.FragmentComponent;
 import com.robert.zhihu.injector.module.FragmentModule;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -21,17 +23,19 @@ import butterknife.Unbinder;
  * Created by robert on 2016/8/8.
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements IView {
 
     protected Context mContext;
     protected FragmentComponent mFragmentComponent;
     private Unbinder unbinder;
-    protected IPresenter mIPresenter;
+
+    @Inject
+    protected T mIPresenter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mContext = getActivity();
+    public void onAttach(Context context) {
+        mContext = context;
+        super.onAttach(context);
     }
 
     @Nullable
@@ -39,6 +43,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflateView(inflater);
         unbinder = ButterKnife.bind(this, view);
+        if (mIPresenter != null) mIPresenter.attachView(this);
         return view;
     }
 

@@ -2,10 +2,7 @@ package com.robert.zhihu.injector.component;
 
 import android.content.Context;
 
-import com.robert.zhihu.Base.BaseActivity;
-import com.robert.zhihu.Base.BaseFragment;
-import com.robert.zhihu.cache.CacheLoader;
-import com.robert.zhihu.data.api.HotApi;
+import com.robert.zhihu.data.DataManager;
 import com.robert.zhihu.injector.module.AppModule;
 import com.robert.zhihu.injector.scope.ContextLife;
 
@@ -19,15 +16,10 @@ import dagger.Component;
 @Singleton
 @Component(modules = AppModule.class)
 public interface AppComponent {
-    void inject(BaseActivity baseActivity);
-
-    void inject(BaseFragment baseFragment);
 
     //提供Application
     @ContextLife()
     Context getContext();
 
-    HotApi getHotApi();
-
-    CacheLoader getCacheLoader();
+    DataManager getDataManager();
 }

@@ -1,4 +1,4 @@
-package com.robert.zhihu.Base;
+package com.robert.zhihu.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,19 +17,21 @@ import com.robert.zhihu.injector.module.ActivityModule;
 import com.robert.zhihu.utils.PermissionUtils;
 import com.wkw.common_lib.utils.AppManager;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 
 /**
  * Created by robert on 2016/8/8.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivity implements IView {
 
     public static final String TAG = "BaseActivity";
     protected ActivityComponent mActivityComponent;
     protected Context mContext;
-
-    protected IPresenter mIPresenter;
+    @Inject
+    protected T mIPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,19 +41,19 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .appComponent(appComponent)
                 .activityModule(new ActivityModule(this))
                 .build();
-        appComponent.inject(this);
         super.onCreate(savedInstanceState);
         mContext = this;
         setContentView(getLayoutId());
         ButterKnife.bind(this);
+        if (mIPresenter != null) mIPresenter.attachView(this);
         initInjector();
-        initViewWithListener();
+        initEventAndData();
         AppManager.getAppManager().addActivity(this);
     }
 
     protected abstract void initInjector();
 
-    protected abstract void initViewWithListener();
+    protected abstract void initEventAndData();
 
     protected abstract int getLayoutId();
 
