@@ -32,6 +32,11 @@ public class App extends Application {
         initExtension();
     }
 
+    @Override
+    public void registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback) {
+        super.registerActivityLifecycleCallbacks(callback);
+    }
+
     public static App getApp() {
         return app;
     }

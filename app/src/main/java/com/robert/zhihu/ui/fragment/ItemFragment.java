@@ -33,14 +33,11 @@ public class ItemFragment extends BaseFragment<ItemPresenter> implements ItemCon
     }
 
     @Override
-    public void initListener(View view) {
-
-    }
-
-    @Override
     public View inflateView(LayoutInflater inflater) {
         return inflater.inflate(R.layout.fragment_item, null);
     }
+
+
 
     public static ItemFragment newInstance(String tab) {
         ItemFragment itemFragment = new ItemFragment();

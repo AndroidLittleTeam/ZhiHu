@@ -50,6 +50,15 @@ public final class ViewUtils {
         // static use.
     }
 
+    /**
+     * 获取Activity的根布局的View
+     * @param context 当前Activity
+     * @return 返回根布局的View
+     */
+    public static View getRootView(Activity context) {
+        return ((ViewGroup) (context.findViewById(android.R.id.content))).getChildAt(0);
+    }
+
     public static <T extends View> T findById(View view, int id) {
         return (T) view.findViewById(id);
     }
