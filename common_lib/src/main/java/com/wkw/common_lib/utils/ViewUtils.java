@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
 import com.wkw.common_lib.Ext;
@@ -51,7 +52,23 @@ public final class ViewUtils {
     }
 
     /**
+     * 关闭软键盘
+     *
+     * @param activity 当前Activity
+     */
+    public static void closeSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager.isActive()) {
+            View currentFocus = activity.getCurrentFocus();
+            if (currentFocus != null) {
+                inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        }
+    }
+
+    /**
      * 获取Activity的根布局的View
+     *
      * @param context 当前Activity
      * @return 返回根布局的View
      */
