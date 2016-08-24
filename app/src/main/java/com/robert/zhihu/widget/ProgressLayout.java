@@ -31,8 +31,14 @@ public class ProgressLayout extends RelativeLayout {
     private LayoutParams layoutParams;
     private RelativeLayout viewError;
     private RelativeLayout viewNoData;
-    private Button btnTry;
+    private Button btnErrorTry;
+    private Button btnNoDataTry;
 
+    private State currentState = State.LOADING;
+
+    private enum State {
+        LOADING, CONTENT, ERROR, NO_DATA
+    }
 
     public ProgressLayout(Context context) {
         super(context);
@@ -66,10 +72,51 @@ public class ProgressLayout extends RelativeLayout {
         }
     }
 
-    public void showLoading(){
-
+    public boolean isContent() {
+        return currentState == State.CONTENT;
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (btnErrorTry != null) btnErrorTry.setOnClickListener(null);
+        if (btnNoDataTry != null) btnNoDataTry.setOnClickListener(null);
+    }
+
+    public void showLoading() {
+        currentState = State.LOADING;
+        showLoadingView();
+        hideErrorView();
+        hideNoDataView();
+        this.setContentVisibility(false);
+    }
+
+    public void showError(String msg, OnClickListener listener) {
+        if (isContent()) return;
+        currentState = State.ERROR;
+        showErrorView(msg);
+        hideLoadingView();
+        hideNoDataView();
+        btnErrorTry.setOnClickListener(listener);
+        this.setContentVisibility(false);
+    }
+
+    public void showContent() {
+        currentState = State.CONTENT;
+        hideLoadingView();
+        hideNoDataView();
+        hideErrorView();
+        this.setContentVisibility(true);
+    }
+
+    public void showNoData(OnClickListener listener) {
+        currentState = State.NO_DATA;
+        hideLoadingView();
+        hideErrorView();
+        showNoDataView();
+        btnNoDataTry.setOnClickListener(listener);
+        this.setContentVisibility(false);
+    }
 
     public void showLoadingView() {
         if (viewLoading == null) {
@@ -85,7 +132,7 @@ public class ProgressLayout extends RelativeLayout {
         if (viewError == null) {
             viewError = (RelativeLayout) inflater.inflate(R.layout.layout_error_view, null);
             viewError.setTag(TAG_ERROR);
-            btnTry = (Button) viewError.findViewById(R.id.btn_try);
+            btnErrorTry = (Button) viewError.findViewById(R.id.btn_try);
             ((TextView) viewError.findViewById(R.id.tv_error)).setText(msg);
             this.addView(viewError, layoutParams);
         } else {
@@ -97,7 +144,7 @@ public class ProgressLayout extends RelativeLayout {
         if (viewNoData == null) {
             viewNoData = (RelativeLayout) inflater.inflate(R.layout.layout_no_data_view, null);
             viewNoData.setTag(TAG_NO_DATA);
-            btnTry = (Button) viewError.findViewById(R.id.btn_try);
+            btnNoDataTry = (Button) viewError.findViewById(R.id.btn_try);
             this.addView(viewNoData, layoutParams);
         } else {
             viewNoData.setVisibility(VISIBLE);
@@ -119,6 +166,12 @@ public class ProgressLayout extends RelativeLayout {
     public void hideNoDataView() {
         if (viewNoData != null && viewNoData.getVisibility() == VISIBLE) {
             viewNoData.setVisibility(GONE);
+        }
+    }
+
+    private void setContentVisibility(boolean visible) {
+        for (View contentView : contentViews) {
+            contentView.setVisibility(visible ? VISIBLE : GONE);
         }
     }
 }
