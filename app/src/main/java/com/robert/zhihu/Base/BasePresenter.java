@@ -11,13 +11,12 @@ import rx.subscriptions.CompositeSubscription;
 
 public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
 
-    public BasePresenter(){
+    protected T mView;
+    protected CompositeSubscription mCompositeSubscription;
+
+    public BasePresenter() {
 
     }
-
-    protected T mView;
-
-    protected CompositeSubscription mCompositeSubscription;
 
     @Override
     public void attachView(@NonNull T view) {
@@ -27,6 +26,7 @@ public abstract class BasePresenter<T extends IView> implements IPresenter<T> {
     @Override
     public void detachView() {
         mView = null;
+        removeSubscribe();
     }
 
     public void addSubscribe(Subscription subscription) {

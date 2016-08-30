@@ -6,17 +6,6 @@ package com.robert.zhihu.entity;
 
 public class Popular {
 
-    @Override
-    public String toString() {
-        return "Popular{" +
-                "ctime='" + ctime + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", picUrl='" + picUrl + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
-
     /**
      * ctime : 2016-05-25
      * title : 李仁港怎么注入ROCK范儿？井宝如何撒野？《盗墓笔记》的方方面面请看这里！
@@ -30,6 +19,17 @@ public class Popular {
     private String description;
     private String picUrl;
     private String url;
+
+    @Override
+    public String toString() {
+        return "Popular{" +
+                "ctime='" + ctime + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", picUrl='" + picUrl + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 
     public String getCtime() {
         return ctime;

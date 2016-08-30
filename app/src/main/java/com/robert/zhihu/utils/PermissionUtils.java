@@ -23,15 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PermissionUtils {
-    private static final String TAG = PermissionUtils.class.getSimpleName();
-
     public static final int CODE_CAMERA = 0;
     public static final int CODE_ADJUST_CAMERA = -1;
     public static final int CODE_STORAGE = 1;
     public static final int CODE_LOCATION = 2;
     public static final int CODE_AUDIO = 3;
     public static final int CODE_PHONE_STATE = 4;
-
     public static final String[] PERMISSION_CAMERA = new String[]{
             Manifest.permission.CAMERA
     };
@@ -49,6 +46,7 @@ public class PermissionUtils {
     public static final String[] PERMISSION_PHONE_STATE = new String[]{
             Manifest.permission.READ_PHONE_STATE
     };
+    private static final String TAG = PermissionUtils.class.getSimpleName();
 
     public static boolean hasPermission4Camera(@NonNull Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {

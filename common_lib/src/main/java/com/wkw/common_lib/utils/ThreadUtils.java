@@ -21,8 +21,8 @@ public class ThreadUtils {
     private final static WeakHashMap<Looper, PrinterWrapper> sLooperPrinters =
             new WeakHashMap<Looper, PrinterWrapper>();
     private static Thread sMainThread = Looper.getMainLooper().getThread();
-    private static Handler sMainHandler = new Handler(Looper.getMainLooper());
 
+    private static Handler sMainHandler = new Handler(Looper.getMainLooper());
     private ThreadUtils() {
         // static usage.
     }

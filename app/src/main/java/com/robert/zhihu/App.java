@@ -18,6 +18,14 @@ public class App extends Application {
     private static App app;
     private static AppComponent appComponent;
 
+    public static App getApp() {
+        return app;
+    }
+
+    public static AppComponent getAppComponent() {
+        return appComponent;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -35,14 +43,6 @@ public class App extends Application {
     @Override
     public void registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback) {
         super.registerActivityLifecycleCallbacks(callback);
-    }
-
-    public static App getApp() {
-        return app;
-    }
-
-    public static AppComponent getAppComponent() {
-        return appComponent;
     }
 
     private void initExtension() {

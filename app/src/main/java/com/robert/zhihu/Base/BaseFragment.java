@@ -1,5 +1,6 @@
 package com.robert.zhihu.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,13 +28,12 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
 
     protected Context mContext;
     protected FragmentComponent mFragmentComponent;
-    private Unbinder unbinder;
-
     @Inject
     protected T mIPresenter;
+    private Unbinder unbinder;
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Activity context) {
         mContext = context;
         mFragmentComponent = DaggerFragmentComponent.builder()
                 .appComponent(App.getAppComponent())
@@ -55,8 +55,13 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-
+        initEventAndData();
     }
+
+    /**
+     * 初始化数据
+     */
+    protected abstract void initEventAndData();
 
     /**
      * 初始化注入

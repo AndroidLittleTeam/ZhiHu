@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 public interface IPresenter<T extends IView> {
     /**
      * 关联View，使之可以和view关联
+     *
      * @param view
      */
     void attachView(@NonNull T view);

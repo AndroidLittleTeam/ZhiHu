@@ -11,10 +11,9 @@ import rx.Observable;
 public class CacheLoader {
 
     private static final String TAG = "CacheLoader";
+    private static CacheLoader mCacheLoader;
     private final MemoryCache mMemoryCache;
     private final DiskCache mDiskCache;
-
-    private static CacheLoader mCacheLoader;
 
     private CacheLoader() {
         mMemoryCache = new MemoryCache();
@@ -49,11 +48,11 @@ public class CacheLoader {
         });
     }
 
-    public void ClearMemory(String key){
+    public void ClearMemory(String key) {
         mMemoryCache.clearCache(key);
     }
 
-    public void clearMemoryDisk(String key){
+    public void clearMemoryDisk(String key) {
         mMemoryCache.clearCache(key);
         mDiskCache.clearCache(key);
     }
